@@ -10,7 +10,8 @@
 
 <h:body>
 	<h:form id="form">
-		<p:growl id="growl" life="2000" />
+		<p:growl id="growl" life="4000" />
+		<p:messages id="messages" autoUpdate="true" />
 
 		<p:fieldset legend="Cadastro de Usuários" style="margin-bottom:20px">
 			<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
@@ -20,18 +21,13 @@
 
 				<p:outputLabel value="Email:" for="email" />
 				<p:inputText id="email" value="#{clienteBean.cliente.email}" />
+				
+				<h:outputLabel for="pwd1" value="Senha:" />
+        		<p:password id="pwd1" value="#{clienteBean.cliente.senha}" match="pwd2" label="Senha" />
+ 
+        		<h:outputLabel for="pwd2" value="Confirma Senha:" />
+        		<p:password id="pwd2" value="#{clienteBean.cliente.senha}" label="Confirma senha" />
 
-				<!-- 				<p:outputLabel value="Senha:" for="senha" /> -->
-				<!-- 				<p:inputText id="senha" value="#{clienteBean.cliente.senha}" /> -->
-
-				<p:messages id="messages" showDetail="true" autoUpdate="true" life="2000"/>
-				<h:outputLabel for="pwd1" value="Senha: *" />
-				<p:password id="pwd1" value="#{clienteBean.cliente.senha}" match="pwd2"
-					label="Senha:" required="true" />
-
-				<h:outputLabel for="pwd2" value="Confirma senha: *" />
-				<p:password id="pwd2" value="#{clienteBean.cliente.senha}"
-					label="Confirma senha:" required="true" />
 			</h:panelGrid>
 			
 			<br/>

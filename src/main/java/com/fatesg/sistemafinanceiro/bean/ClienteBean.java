@@ -34,7 +34,7 @@ public class ClienteBean {
 
 
 	public void save(ActionEvent actionEvent) throws Exception {
-		if (cliente.getNome().isEmpty() || cliente.getSenha().isEmpty()
+		if (cliente.getNome().isEmpty() || cliente.getEmail().isEmpty()
 				|| cliente.getSenha().isEmpty()) {
 			addMessage("Todos os campos devem ser preenchidos!!");
 		}else {
@@ -42,10 +42,8 @@ public class ClienteBean {
 			cliente.setSenha(hash);
 			ClienteDAO dao = new ClienteDAO();
 			dao.save(cliente);
-			addMessage("Cadastrado com sucesso!!");
+			addMessage("Cadastro realizado com sucesso!!");
 			this.listAll();
-			System.out.println("SENHA HASH: "+HashGenerator.hashGenerator(cliente.getSenha(), "MD5"));
-			
 		}
 	}
 	
@@ -74,8 +72,6 @@ public class ClienteBean {
 		
 	}
 	
-	
-	
 	public void onRowSelect(SelectEvent event) throws Exception {
 		this.selectedCliente = ((Cliente) event.getObject());
 		cliente.setNome(this.selectedCliente.getNome());
@@ -102,6 +98,4 @@ public class ClienteBean {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	
 }

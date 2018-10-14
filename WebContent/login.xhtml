@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:fieldset style="margin-bottom:20px" >
+			<h:panelGrid columns="2" cellpadding="5">
+                
+				<p:outputLabel value="Email:" for="email" />
+				<p:inputText id="email" />
+
+				<p:outputLabel value="Senha:" for="senha" />
+				<p:inputText id="senha" />
+				
+				<p:commandButton value="Entrar" icon="ui-icon-check" />
+
+			</h:panelGrid>
+		</p:fieldset>
+	</h:form>
+</h:body>
+</html>

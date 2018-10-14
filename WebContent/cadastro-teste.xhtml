@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Teste de Cadastros</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:fieldset legend="Cadastro de Usuários" style="margin-bottom:20px">
+			<h:panelGrid columns="8" cellpadding="5" >
+
+				<p:outputLabel value="Id:" for="id" />
+				<p:inputText id="id" disabled="true"
+					value="#{clienteBean.cliente.id}" />
+
+				<p:outputLabel value="Nome:" for="nome" />
+				<p:inputText id="nome" value="#{clienteBean.cliente.nome}" />
+
+				<p:outputLabel value="Email:" for="email" />
+				<p:inputText id="email" value="#{clienteBean.cliente.email}" />
+
+				<p:outputLabel value="Senha:" for="senha" />
+				<p:inputText id="senha" value="#{clienteBean.cliente.senha}" />
+			</h:panelGrid>
+		</p:fieldset>
+
+		<p:toolbar>
+			<f:facet name="left">
+				<p:commandButton value="Salvar" icon="ui-icon-check"
+					update="tableCliente" actionListener="#{clienteBean.save}" />
+
+				<p:commandButton value="Deletar" icon="ui-icon-check"
+					update="tableCliente" actionListener="#{clienteBean.delete}" />
+					
+				<p:commandButton value="Atualizar" icon="ui-icon-check"
+					update="nome" />
+			</f:facet>
+		</p:toolbar>
+		
+		<br/>
+
+		<p:dataTable id="tableCliente" selectionMode="single"
+			rowKey="#{cliente.id}" var="cliente"
+			selection="#{clienteBean.selectedCliente}"
+			value="#{clienteBean.clientes}">
+			<f:facet name="header">
+	            Lista de Clientes
+	        </f:facet>
+			<p:ajax event="rowSelect" listener="#{clienteBean.onRowSelect}" />
+			<p:column headerText="Id">
+				<h:outputText value="#{cliente.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{cliente.nome}" />
+			</p:column>
+
+			<p:column headerText="Email">
+				<h:outputText value="#{cliente.email}" />
+			</p:column>
+
+			<p:column headerText="Senha">
+				<h:outputText value="#{cliente.senha}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+</h:body>
+</html>

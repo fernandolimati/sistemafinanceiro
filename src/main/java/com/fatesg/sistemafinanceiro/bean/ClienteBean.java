@@ -74,6 +74,8 @@ public class ClienteBean {
 		
 	}
 	
+	
+	
 	public void onRowSelect(SelectEvent event) throws Exception {
 		this.selectedCliente = ((Cliente) event.getObject());
 		cliente.setNome(this.selectedCliente.getNome());
